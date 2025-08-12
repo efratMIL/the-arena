@@ -1,0 +1,240 @@
+[gd_scene load_steps=5 format=3 uid="uid://72kwr16oote3"]
+
+[ext_resource type="Script" uid="uid://bf8w2m3ct20vy" path="res://Scenes/BoardScene.gd" id="1_l56c8"]
+[ext_resource type="Script" uid="uid://bvb18u83xfnkh" path="res://Scripts/duel_popup_handler.gd" id="2_jf025"]
+
+[sub_resource type="GDScript" id="GDScript_l56c8"]
+script/source = "extends GridContainer
+
+var buttons: Array = []
+
+func create_grid(players: Array):
+	clear_grid()
+	for i in range(players.size()):
+		var btn = Button.new()
+		btn.text = players[i].name
+		btn.pressed.connect(func(): _on_player_button_pressed(i))
+		add_child(btn)
+		buttons.append(btn)
+
+func clear_grid():
+	for child in get_children():
+		child.queue_free()
+	buttons.clear()
+
+func get_total_buttons() -> int:
+	return buttons.size()
+
+func darken_all():
+	for btn in buttons:
+		btn.modulate = Color(0.2, 0.2, 0.2)
+
+func highlight_single(index: int, color: Color):
+	if index >= 0 and index < buttons.size():
+		buttons[index].modulate = color
+
+func _on_player_button_pressed(index: int):
+	# Optional: if you want player click to do something separate
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_jf025"]
+script/source = "extends Node
+
+signal sweep_finished
+
+var sweep_order: Array = []
+var current_index: int = 0
+var speed: float = 0.3
+var total_buttons: int = 0
+var active = false
+
+func start_sweep(button_count: int, sweep_speed: float):
+	total_buttons = button_count
+	speed = sweep_speed
+	sweep_order = range(button_count)
+	current_index = 0
+	active = true
+	set_process(true)
+
+func _process(delta):
+	if not active:
+		return
+	# emit an update signal for UI here if needed
+	current_index += 1
+	if current_index >= total_buttons:
+		active = false
+		set_process(false)
+		emit_signal(\"sweep_finished\")
+"
+
+[node name="BoardScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_l56c8")
+
+[node name="RandomPickButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 744.0
+offset_top = 25.0
+offset_right = 1080.0
+offset_bottom = 60.0
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 149.0
+offset_right = 736.0
+offset_bottom = 354.0
+columns = 5
+script = SubResource("GDScript_l56c8")
+
+[node name="Button2" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button5" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button6" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button7" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button8" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button9" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button10" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button11" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button12" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button13" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button14" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button15" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button16" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button17" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button18" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button19" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button20" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button21" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="DuelPopup" type="Window" parent="."]
+auto_translate_mode = 1
+initial_position = 1
+visible = false
+script = ExtResource("2_jf025")
+
+[node name="BackgroundPanel" type="Panel" parent="DuelPopup"]
+offset_left = 2.0
+offset_top = 376.0
+offset_right = 2.0
+offset_bottom = 376.0
+
+[node name="Player1Panel" type="Panel" parent="DuelPopup/BackgroundPanel"]
+layout_mode = 0
+offset_left = -298.0
+offset_top = -263.0
+offset_right = -298.0
+offset_bottom = -257.0
+
+[node name="Player1Label" type="Label" parent="DuelPopup/BackgroundPanel/Player1Panel"]
+layout_mode = 0
+offset_left = 655.0
+offset_top = -82.0
+offset_right = 884.0
+offset_bottom = 64.0
+
+[node name="VSLabel" type="Label" parent="DuelPopup/BackgroundPanel"]
+layout_mode = 0
+offset_left = 249.0
+offset_top = -368.0
+offset_right = 369.0
+offset_bottom = -303.0
+
+[node name="Player2Panel" type="Panel" parent="DuelPopup/BackgroundPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.41
+offset_left = -398.0
+offset_top = -253.0
+offset_right = -398.0
+offset_bottom = -243.0
+
+[node name="Player2Label" type="Label" parent="DuelPopup/BackgroundPanel/Player2Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.833
+anchor_right = 0.833
+offset_left = 255.0
+offset_top = -97.0
+offset_right = 474.0
+offset_bottom = 38.0
+
+[node name="CategoryLabel" type="Label" parent="DuelPopup/BackgroundPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49
+anchor_top = 1.27
+anchor_right = 0.49
+anchor_bottom = 1.27
+offset_left = 163.0
+offset_top = -156.0
+offset_right = 452.0
+offset_bottom = -68.0
+
+[node name="StartButton" type="Button" parent="DuelPopup"]
+anchors_preset = -1
+anchor_bottom = 0.19
+offset_left = 180.0
+offset_top = 306.0
+offset_right = 441.0
+offset_bottom = 319.0
+
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_jf025")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Control2" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="duel_started" from="DuelPopup" to="." method="_on_duel_popup_duel_started"]

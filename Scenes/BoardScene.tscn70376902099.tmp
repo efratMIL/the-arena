@@ -1,0 +1,120 @@
+[gd_scene load_steps=4 format=3 uid="uid://72kwr16oote3"]
+
+[ext_resource type="Script" uid="uid://bf8w2m3ct20vy" path="res://Scenes/BoardScene.gd" id="1_l56c8"]
+[ext_resource type="Script" uid="uid://jf3h3ech5gfo" path="res://Scenes/GridManager.gd" id="2_jf025"]
+[ext_resource type="Script" uid="uid://cuchexrhbex0e" path="res://Scenes/SweepController.gd" id="3_cyht7"]
+
+[node name="BoardScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_l56c8")
+
+[node name="RandomPickButton" type="Button" parent="."]
+offset_left = 516.0
+offset_top = 25.0
+offset_right = 668.0
+offset_bottom = 60.0
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 85.0
+offset_right = 195.0
+offset_bottom = 129.0
+columns = 5
+script = ExtResource("2_jf025")
+
+[node name="Button2" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button5" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button6" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button7" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button8" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button9" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button10" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button11" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button12" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button13" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button14" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button15" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button16" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button17" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button18" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button19" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button20" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button21" type="Button" parent="GridContainer"]
+layout_mode = 2
+
+[node name="DuelPopup" type="Window" parent="."]
+auto_translate_mode = 1
+position = Vector2i(0, 36)
+
+[node name="CategoryLabel" type="Label" parent="DuelPopup"]
+anchors_preset = -1
+anchor_left = 0.49
+anchor_top = 0.683
+anchor_right = 0.49
+anchor_bottom = 0.683
+offset_left = -20.0
+offset_top = -64.3
+offset_right = 20.0
+offset_bottom = -41.3
+
+[node name="Player1Label" type="Label" parent="DuelPopup"]
+offset_left = -115.0
+offset_top = -10.0
+offset_right = -57.0
+offset_bottom = 13.0
+
+[node name="Player2Label" type="Label" parent="DuelPopup"]
+offset_left = -29.0
+offset_top = -3.0
+offset_right = 11.0
+offset_bottom = 20.0
+
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -77.0
+offset_top = 31.0
+offset_right = -37.0
+offset_bottom = 71.0
+script = ExtResource("3_cyht7")

@@ -1,0 +1,75 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyod6w408kx61"]
+
+[ext_resource type="Script" uid="uid://g0f32hbxcdhx" path="res://Scenes/battle_arena.gd" id="1_lya5k"]
+
+[node name="BattleArena" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_lya5k")
+
+[node name="Player1TimerLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1837.0
+offset_top = -2.0
+offset_right = 2310.0
+offset_bottom = 264.0
+
+[node name="Player2TimerLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 449.0
+offset_bottom = 261.0
+
+[node name="Player1NameLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1555.0
+offset_top = 644.0
+offset_right = 2062.0
+offset_bottom = 816.0
+
+[node name="Player2NameLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 657.0
+offset_right = 450.0
+offset_bottom = 788.0
+
+[node name="AnimalImage" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 605.0
+offset_top = 58.0
+offset_right = 1202.0
+offset_bottom = 461.0
+stretch_mode = 6
+
+[node name="SayButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1576.0
+offset_top = 802.0
+offset_right = 1902.0
+offset_bottom = 933.0
+text = "תשובה נכונה!"
+
+[node name="SkipButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 814.0
+offset_right = 349.0
+offset_bottom = 944.0
+text = "דלג"
+
+[node name="filenameLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 845.0
+offset_top = 850.0
+offset_right = 1539.0
+offset_bottom = 1206.0
+
+[node name="VSLable" type="Label" parent="."]
+layout_mode = 0
+offset_left = 916.0
+offset_top = 698.0
+offset_right = 1261.0
+offset_bottom = 967.0
+text = "VS"
